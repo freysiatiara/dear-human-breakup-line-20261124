@@ -17,6 +17,12 @@ LINE = (
 
 
 def main() -> None:
+    if not 1 <= len(LINE) <= 200:
+        raise SystemExit("entry line must be 1-200 characters long")
+    if "\n" in LINE or "\r" in LINE:
+        raise SystemExit("entry line must be a single line")
+    if not LINE.strip():
+        raise SystemExit("entry line must not be only whitespace")
     os.makedirs("/output", exist_ok=True)
     path = "/output/entry.txt"
     with open(path, "w", encoding="utf-8") as handle:
